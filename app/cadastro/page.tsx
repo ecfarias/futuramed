@@ -26,9 +26,12 @@ export default function CadastroPage() {
 
   // Load saved form data on mount
   useEffect(() => {
-    const savedData = localStorage.getItem(STORAGE_KEY);
-    if (savedData) {
-      try {
+    // Check if window is available (client-side only)
+    if (typeof window === 'undefined') return;
+    
+    try {
+      const savedData = localStorage.getItem(STORAGE_KEY);
+      if (savedData) {
         const parsed = JSON.parse(savedData);
         if (parsed.formData) {
           setFormData(parsed.formData);
@@ -40,20 +43,36 @@ export default function CadastroPage() {
           text: "✓ Seus dados foram restaurados automaticamente.",
         });
         // Clear the message after 3 seconds
-        setTimeout(() => {
+        const timeoutId = setTimeout(() => {
           setMessage(null);
         }, 3000);
-      } catch (error) {
-        console.error("Error loading saved form data:", error);
+        
+        // Cleanup timeout on unmount
+        return () => clearTimeout(timeoutId);
       }
+    } catch (error) {
+      console.error("Error loading saved form data:", error);
     }
   }, []);
 
-  // Auto-save form data to localStorage
+  // Auto-save form data to localStorage with debouncing
   useEffect(() => {
+    // Check if window is available (client-side only)
+    if (typeof window === 'undefined') return;
+    
     if (formData.razaoSocial || formData.cnpj || formData.email || formData.telefone) {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify({ formData }));
-      setIsAutoSaved(true);
+      // Debounce the localStorage write
+      const timeoutId = setTimeout(() => {
+        try {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify({ formData }));
+          setIsAutoSaved(true);
+        } catch (error) {
+          console.error("Error saving form data:", error);
+        }
+      }, 500); // Wait 500ms after user stops typing
+      
+      // Cleanup timeout if formData changes again before timeout completes
+      return () => clearTimeout(timeoutId);
     }
   }, [formData]);
 
@@ -144,7 +163,11 @@ export default function CadastroPage() {
           text: "Cadastro enviado com sucesso! Entraremos em contato em breve.",
         });
         // Clear localStorage after successful submission
-        localStorage.removeItem(STORAGE_KEY);
+        try {
+          localStorage.removeItem(STORAGE_KEY);
+        } catch (error) {
+          console.error("Error clearing saved form data:", error);
+        }
         setIsAutoSaved(false);
         // Reset form
         setFormData({
