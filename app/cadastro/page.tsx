@@ -1,6 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
+const STORAGE_KEY = "futuramed_cadastro_form";
 
 export default function CadastroPage() {
   const [formData, setFormData] = useState({
@@ -20,6 +22,40 @@ export default function CadastroPage() {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [message, setMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
+  const [isAutoSaved, setIsAutoSaved] = useState(false);
+
+  // Load saved form data on mount
+  useEffect(() => {
+    const savedData = localStorage.getItem(STORAGE_KEY);
+    if (savedData) {
+      try {
+        const parsed = JSON.parse(savedData);
+        if (parsed.formData) {
+          setFormData(parsed.formData);
+        }
+        setIsAutoSaved(true);
+        // Show notification that data was restored
+        setMessage({
+          type: "success",
+          text: "✓ Seus dados foram restaurados automaticamente.",
+        });
+        // Clear the message after 3 seconds
+        setTimeout(() => {
+          setMessage(null);
+        }, 3000);
+      } catch (error) {
+        console.error("Error loading saved form data:", error);
+      }
+    }
+  }, []);
+
+  // Auto-save form data to localStorage
+  useEffect(() => {
+    if (formData.razaoSocial || formData.cnpj || formData.email || formData.telefone) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({ formData }));
+      setIsAutoSaved(true);
+    }
+  }, [formData]);
 
   const documentLabels = {
     doc_cnpj: "Cadastro Nacional de Pessoa Jurídica - CNPJ",
@@ -107,6 +143,9 @@ export default function CadastroPage() {
           type: "success",
           text: "Cadastro enviado com sucesso! Entraremos em contato em breve.",
         });
+        // Clear localStorage after successful submission
+        localStorage.removeItem(STORAGE_KEY);
+        setIsAutoSaved(false);
         // Reset form
         setFormData({
           razaoSocial: "",
@@ -169,6 +208,16 @@ export default function CadastroPage() {
             </div>
 
             <form onSubmit={handleSubmit} className="bg-white rounded-lg shadow-lg p-8">
+              {/* Auto-save Indicator */}
+              {isAutoSaved && !message && (
+                <div className="mb-4 p-3 bg-blue-50 border border-blue-200 rounded-lg flex items-center text-sm text-blue-800">
+                  <svg className="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                  Seus dados estão sendo salvos automaticamente
+                </div>
+              )}
+              
               {/* Message */}
               {message && (
                 <div
