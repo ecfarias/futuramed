@@ -22,7 +22,7 @@ export default function Header() {
           <Link href="/" className="flex items-center">
             <div className="w-48 h-12 relative">
               <Image
-                src="/images/logo.png"
+                src="/futuramed/images/logo.png"
                 alt="Futuramed Sports Medicine"
                 fill
                 className="object-contain"

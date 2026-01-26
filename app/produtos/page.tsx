@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 export default function ProdutosPage() {
   const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "5551981113836";
@@ -87,11 +88,14 @@ export default function ProdutosPage() {
 
             <div className="space-y-6">
               <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-                <div className="h-80 bg-gray-200 relative">
-                  <div className="absolute inset-0 flex items-center justify-center text-gray-400">
-                    BioChronic Logo
-                  </div>
-                </div>
+  <div className="h-80 bg-gray-200 relative">
+    <Image
+      src="/futuramed/images/biochronic-logo.jpg"
+      alt="BioChronic Logo"
+      fill
+      className="object-contain p-8"
+    />
+  </div>
               </div>
             </div>
           </div>
@@ -122,11 +126,14 @@ export default function ProdutosPage() {
 
           <div className="grid md:grid-cols-2 gap-8">
             <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-              <div className="h-80 bg-gray-200 relative">
-                <div className="absolute inset-0 flex items-center justify-center text-gray-400">
-                  BioChronic Tabela
-                </div>
-              </div>
+<div className="h-80 bg-gray-200 relative">
+  <Image
+    src="/futuramed/images/biochronic-table.jpg"
+    alt="Especificações Técnicas BioChronic"
+    fill
+    className="object-contain p-4"
+  />
+</div>
               <div className="p-6">
                 <h3 className="text-xl font-bold mb-2">Especificações Técnicas</h3>
                 <p className="text-gray-600">
@@ -136,11 +143,14 @@ export default function ProdutosPage() {
             </div>
 
             <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-              <div className="h-80 bg-gray-200 relative">
-                <div className="absolute inset-0 flex items-center justify-center text-gray-400">
-                  BioChronic Componentes
-                </div>
-              </div>
+<div className="h-80 bg-gray-200 relative">
+  <Image
+    src="/futuramed/images/biochronic-components.jpg"
+    alt="Componentes do Kit BioChronic"
+    fill
+    className="object-contain p-4"
+  />
+</div>
               <div className="p-6">
                 <h3 className="text-xl font-bold mb-2">Componentes Visuais</h3>
                 <p className="text-gray-600">

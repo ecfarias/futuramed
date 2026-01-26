@@ -36,49 +36,58 @@ export default function SobrePage() {
           <h2 className="text-3xl font-bold text-dark mb-12 text-center">
             Nossas Instalações
           </h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-              <div className="h-64 bg-gray-200 relative">
-                <div className="absolute inset-0 flex items-center justify-center text-gray-400">
-                  Escritório 1
-                </div>
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-bold mb-2">Escritório Administrativo</h3>
-                <p className="text-gray-600">
-                  Ambiente moderno e equipado para atender nossos clientes.
-                </p>
-              </div>
-            </div>
+<div className="grid md:grid-cols-3 gap-8">
+  <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+    <div className="h-64 bg-gray-200 relative">
+      <Image
+        src="/futuramed/images/office-1.jpg"
+        alt="Escritório Administrativo"
+        fill
+        className="object-cover"
+      />
+    </div>
+    <div className="p-6">
+      <h3 className="text-xl font-bold mb-2">Escritório Administrativo</h3>
+      <p className="text-gray-600">
+        Ambiente moderno e equipado para atender nossos clientes.
+      </p>
+    </div>
+  </div>
 
-            <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-              <div className="h-64 bg-gray-200 relative">
-                <div className="absolute inset-0 flex items-center justify-center text-gray-400">
-                  Torre Medical
-                </div>
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-bold mb-2">Torre Medical</h3>
-                <p className="text-gray-600">
-                  Localização estratégica em complexo médico de referência.
-                </p>
-              </div>
-            </div>
+  <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+    <div className="h-64 bg-gray-200 relative">
+      <Image
+        src="/futuramed/images/torre-medical.jpg"
+        alt="Torre Medical"
+        fill
+        className="object-cover"
+      />
+    </div>
+    <div className="p-6">
+      <h3 className="text-xl font-bold mb-2">Torre Medical</h3>
+      <p className="text-gray-600">
+        Localização estratégica em complexo médico de referência.
+      </p>
+    </div>
+  </div>
 
-            <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-              <div className="h-64 bg-gray-200 relative">
-                <div className="absolute inset-0 flex items-center justify-center text-gray-400">
-                  Escritório 2
-                </div>
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-bold mb-2">Área de Atendimento</h3>
-                <p className="text-gray-600">
-                  Espaço dedicado ao atendimento e suporte aos clientes.
-                </p>
-              </div>
-            </div>
-          </div>
+  <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+    <div className="h-64 bg-gray-200 relative">
+      <Image
+        src="/futuramed/images/office-2.jpg"
+        alt="Área de Atendimento"
+        fill
+        className="object-cover"
+      />
+    </div>
+    <div className="p-6">
+      <h3 className="text-xl font-bold mb-2">Área de Atendimento</h3>
+      <p className="text-gray-600">
+        Espaço dedicado ao atendimento e suporte aos clientes.
+      </p>
+    </div>
+  </div>
+</div>
         </div>
       </section>
 

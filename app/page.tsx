@@ -40,8 +40,14 @@ export default function Home() {
               </div>
             </div>
             <div className="relative h-64 md:h-96">
-              <div className="absolute inset-0 bg-white/10 rounded-lg"></div>
-            </div>
+	      <Image
+		    src="/futuramed/images/torre-medical.jpg"
+		    alt="Torre Medical"
+		    fill
+		    className="object-cover rounded-lg"
+		  />
+           <div className="absolute inset-0 bg-white/10 rounded-lg"></div>
+           </div>
           </div>
         </div>
       </section>
@@ -77,7 +83,12 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="relative h-80 bg-white rounded-lg shadow-lg">
               <div className="absolute inset-0 flex items-center justify-center text-gray-400">
-                BioChronic Kit
+		<Image
+		    src="/futuramed/images/biochronic-components.jpg"
+		    alt="BioChronic Kit"
+		    fill
+		    className="object-contain p-4"
+		  />
               </div>
             </div>
             <div>
