@@ -62,10 +62,10 @@ Edite o arquivo `.env.local` com suas credenciais:
 ```env
 # Site
 NEXT_PUBLIC_SITE_URL=http://localhost:3000
-NEXT_PUBLIC_WHATSAPP_NUMBER=5551981113836
+NEXT_PUBLIC_WHATSAPP_NUMBER=5519995180739
 
 # Email (use suas credenciais SMTP)
-EMAIL_TO=dudo.rs@gmail.com
+EMAIL_TO=cadatro@futuramed.com
 SMTP_HOST=smtp.gmail.com
 SMTP_PORT=587
 SMTP_USER=seu-email@gmail.com
@@ -225,11 +225,11 @@ Configure de acordo com a documentação do provedor escolhido.
 
 ## 📱 WhatsApp Integration
 
-Número: **+55 51 98111-3836**
+Número: **+55 19 99518 0739**
 
 Formato do link:
 ```
-https://wa.me/5551981113836?text=Mensagem
+https://wa.me/5519995180739?text=Mensagem
 ```
 
 ## 🎨 Identidade Visual
@@ -306,9 +306,9 @@ ports:
 
 ## 📞 Informações de Contato
 
-- **Endereço**: RUA DAS ORQUIDEAS, 667 - SALA 802 - JARDIM POMPEIA - INDAIATUBA/SP
-- **WhatsApp**: +55 51 98111-3836
-- **Email Cadastro**: dudo.rs@gmail.com
+- **Endereço**: Rua das Orquídeas, 667 sl. 802 | Indaiatuba | SP
+- **WhatsApp**: +55 19 99518-0739
+- **Email Cadastro**: cadastro@futuramedsp.com
 
 ## 📝 Licença
 

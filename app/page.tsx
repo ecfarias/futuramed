@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function Home() {
-  const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "5551981113836";
+  const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "5519995180739";
   const message = encodeURIComponent("Olá! Gostaria de mais informações sobre os produtos Futuramed.");
 
   return (
@@ -35,16 +35,16 @@ export default function Home() {
                   href="/produtos"
                   className="bg-white text-primary hover:bg-gray-100 px-8 py-4 rounded-lg font-bold text-lg transition-colors inline-block text-center"
                 >
-                  Conheça o BioChronic
+                  Conheça Nossos Produtos
                 </Link>
               </div>
             </div>
             <div className="relative h-64 md:h-96">
 	      <Image
-		    src="/futuramed/images/torre-medical.jpg"
+		    src="/images/torre-medical.jpg"
 		    alt="Torre Medical"
 		    fill
-		    className="object-cover rounded-lg"
+		    className="object-cover object-bottom rounded-lg"
 		  />
            <div className="absolute inset-0 bg-white/10 rounded-lg"></div>
            </div>
@@ -77,55 +77,120 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Destaque BioChronic */}
-      <section className="py-16 bg-light">
+      {/* Nossos Produtos */}
+      <section className="py-16">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="relative h-80 bg-white rounded-lg shadow-lg">
-              <div className="absolute inset-0 flex items-center justify-center text-gray-400">
-		<Image
-		    src="/futuramed/images/biochronic-components.jpg"
-		    alt="BioChronic Kit"
-		    fill
-		    className="object-contain p-4"
-		  />
+          <h2 className="text-3xl font-bold text-dark mb-4 text-center">
+            Nossos Produtos
+          </h2>
+          <p className="text-lg text-gray-600 mb-12 text-center max-w-3xl mx-auto">
+            Soluções completas para tratamento de dor crônica e medicina regenerativa
+          </p>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {/* BioChronic */}
+            <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+              <div className="h-64 bg-gray-200 relative">
+                <Image
+                  src="/images/biochronic-logo.jpg"
+                  alt="BioChronic"
+                  fill
+                  className="object-contain p-6"
+                />
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-bold mb-2 text-dark">BioChronic</h3>
+                <p className="text-gray-600 mb-4">
+                  Kit completo para tratamento de dor crônica
+                </p>
+                <div className="flex items-center text-sm text-gray-500 mb-4">
+                  <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                  ANVISA Nº 80371259033
+                </div>
+                <Link
+                  href="/produtos"
+                  className="text-primary hover:text-primary-dark font-semibold inline-flex items-center"
+                >
+                  Ver detalhes
+                  <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </Link>
               </div>
             </div>
-            <div>
-              <h2 className="text-3xl font-bold text-dark mb-6">
-                BioChronic - Kit para Tratamento de Dor Crônica
-              </h2>
-              <p className="text-lg text-gray-700 mb-6">
-                Kit completo e estéril para procedimentos de tratamento de dor crônica. 
-                Inclui todos os componentes necessários para uma aplicação segura e eficaz.
-              </p>
-              <ul className="space-y-3 mb-8">
-                <li className="flex items-start">
-                  <svg className="w-6 h-6 text-green-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+
+            {/* Joints Multi */}
+            <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+              <div className="h-64 bg-gray-200 relative flex items-center justify-center">
+                <div className="text-center p-6">
+                  <div className="text-6xl font-bold text-primary mb-2">JM</div>
+                  <p className="text-gray-500 text-sm">Joints Multi</p>
+                </div>
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-bold mb-2 text-dark">Joints Multi</h3>
+                <p className="text-gray-600 mb-4">
+                  Viscosuplemento híbrido com ácido hialurônico
+                </p>
+                <div className="flex items-center text-sm text-gray-500 mb-4">
+                  <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
-                  <span>Produto 100% estéril e seguro</span>
-                </li>
-                <li className="flex items-start">
-                  <svg className="w-6 h-6 text-green-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  ANVISA Nº 81872460015
+                </div>
+                <Link
+                  href="/produtos"
+                  className="text-primary hover:text-primary-dark font-semibold inline-flex items-center"
+                >
+                  Ver detalhes
+                  <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
-                  <span>Kit completo com todos os componentes</span>
-                </li>
-                <li className="flex items-start">
-                  <svg className="w-6 h-6 text-green-500 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                  </svg>
-                  <span>Registro ANVISA Nº 80371259033</span>
-                </li>
-              </ul>
-              <Link
-                href="/produtos"
-                className="bg-primary hover:bg-primary-dark text-white px-8 py-3 rounded-lg font-bold inline-block transition-colors"
-              >
-                Ver Detalhes do Produto
-              </Link>
+                </Link>
+              </div>
             </div>
+
+            {/* Bioblock */}
+            <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+              <div className="h-64 bg-gray-200 relative flex items-center justify-center">
+                <div className="text-center p-6">
+                  <div className="text-6xl font-bold text-primary mb-2">BB</div>
+                  <p className="text-gray-500 text-sm">Bioblock</p>
+                </div>
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-bold mb-2 text-dark">Bioblock</h3>
+                <p className="text-gray-600 mb-4">
+                  Cânula de bloqueio para procedimentos de dor
+                </p>
+                <div className="flex items-center text-sm text-gray-500 mb-4">
+                  <svg className="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                  ANVISA Nº 80371250035
+                </div>
+                <Link
+                  href="/produtos"
+                  className="text-primary hover:text-primary-dark font-semibold inline-flex items-center"
+                >
+                  Ver detalhes
+                  <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          <div className="text-center mt-12">
+            <Link
+              href="/produtos"
+              className="bg-primary hover:bg-primary-dark text-white px-8 py-3 rounded-lg font-bold inline-block transition-colors"
+            >
+              Ver Todos os Produtos
+            </Link>
           </div>
         </div>
       </section>

@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 export default function Footer() {
-  const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "5551981113836";
+  const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "5519995180739";
   const currentYear = new Date().getFullYear();
 
   return (
@@ -54,8 +54,8 @@ export default function Footer() {
             <ul className="space-y-2 text-gray-300">
               <li>
                 <strong>Endereço:</strong><br />
-                RUA DAS ORQUIDEAS, 667 - SALA 802<br />
-                JARDIM POMPEIA - INDAIATUBA/SP
+                Rua das Orquídeas, 667 sl. 802<br />
+                Jardim Pompeia | Indaiatuba | SP
               </li>
               <li>
                 <strong>WhatsApp:</strong><br />
@@ -65,7 +65,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  +55 51 98111-3836
+                  +55 19 99518-0739
                 </a>
               </li>
             </ul>

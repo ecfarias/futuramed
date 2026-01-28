@@ -91,7 +91,7 @@ export async function POST(request: NextRequest) {
     });
 
     // Send email
-    const emailTo = process.env.EMAIL_TO || "dudo.rs@gmail.com";
+    const emailTo = process.env.EMAIL_TO || "cadastro@futuramedsp.com";
     await sendEmail({
       to: emailTo,
       subject: `Novo Cadastro de Cliente - ${razaoSocial}`,

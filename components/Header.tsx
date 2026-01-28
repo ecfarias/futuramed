@@ -16,11 +16,11 @@ export default function Header() {
   ];
 
   return (
-    <header className="bg-white shadow-md sticky top-0 z-50">
-      <nav className="container mx-auto px-4 py-4">
+    <header className="bg-black shadow-md sticky top-0 z-50">
+      <nav className="container mx-auto px-4 py-0">
         <div className="flex items-center justify-between">
-          <Link href="/" className="flex items-center">
-            <div className="w-48 h-12 relative">
+          <Link href="/" className="flex items-center gap-4 py-2">
+            <div className="w-20 h-20 relative">
               <Image
                 src="/futuramed/images/logo.png"
                 alt="Futuramed Sports Medicine"
@@ -29,6 +29,7 @@ export default function Header() {
                 priority
               />
             </div>
+            <span className="text-white text-3xl font-bold tracking-wider">FUTURAMED</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -37,7 +38,7 @@ export default function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-dark hover:text-primary transition-colors font-medium"
+                className="text-white hover:text-primary transition-colors font-medium"
               >
                 {link.label}
               </Link>
@@ -51,7 +52,7 @@ export default function Header() {
             aria-label="Toggle menu"
           >
             <svg
-              className="w-6 h-6 text-dark"
+              className="w-6 h-6 text-white"
               fill="none"
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -75,7 +76,7 @@ export default function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="block py-2 text-dark hover:text-primary transition-colors"
+                className="block py-2 text-white hover:text-primary transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {link.label}

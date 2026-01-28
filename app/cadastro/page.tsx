@@ -313,7 +313,7 @@ export default function CadastroPage() {
               Entre em contato conosco pelo WhatsApp para obter ajuda com o processo de cadastro.
             </p>
             <a
-              href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "5551981113836"}?text=${encodeURIComponent("Olá! Preciso de ajuda com o cadastro de cliente.")}`}
+              href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "5519995180739"}?text=${encodeURIComponent("Olá! Preciso de ajuda com o cadastro de cliente.")}`}
               target="_blank"
               rel="noopener noreferrer"
               className="bg-green-500 hover:bg-green-600 text-white px-8 py-4 rounded-lg font-bold text-lg transition-colors inline-flex items-center"

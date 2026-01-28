@@ -91,9 +91,9 @@ npm run dev
 
 ## 📞 Contact Info in Site
 
-- WhatsApp: +55 51 98111-3836
-- Email (for registrations): dudo.rs@gmail.com
-- Address: RUA DAS ORQUIDEAS, 667 - SALA 802, INDAIATUBA/SP
+- WhatsApp: +55 19 99518-0739
+- Email (for registrations): futuramed@futuramedsp.com
+- Address: Rua das Orquídeas, 667 sl. 802 | Indaiatuba | SP
 
 ## 🎯 Product Info
 

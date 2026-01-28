@@ -40,7 +40,7 @@ export default function SobrePage() {
   <div className="bg-white rounded-lg shadow-lg overflow-hidden">
     <div className="h-64 bg-gray-200 relative">
       <Image
-        src="/futuramed/images/office-1.jpg"
+        src="/images/office-1.jpg"
         alt="Escritório Administrativo"
         fill
         className="object-cover"
@@ -57,10 +57,10 @@ export default function SobrePage() {
   <div className="bg-white rounded-lg shadow-lg overflow-hidden">
     <div className="h-64 bg-gray-200 relative">
       <Image
-        src="/futuramed/images/torre-medical.jpg"
+        src="/images/torre-medical.jpg"
         alt="Torre Medical"
         fill
-        className="object-cover"
+        className="object-cover object-bottom"
       />
     </div>
     <div className="p-6">
@@ -74,7 +74,7 @@ export default function SobrePage() {
   <div className="bg-white rounded-lg shadow-lg overflow-hidden">
     <div className="h-64 bg-gray-200 relative">
       <Image
-        src="/futuramed/images/office-2.jpg"
+        src="/images/office-2.jpg"
         alt="Área de Atendimento"
         fill
         className="object-cover"
@@ -208,10 +208,10 @@ export default function SobrePage() {
                 <strong>Endereço:</strong>
               </p>
               <p className="text-xl text-dark font-semibold mb-2">
-                RUA DAS ORQUIDEAS, 667 - SALA 802
+                Rua das Orquídeas, 667 sl. 802
               </p>
               <p className="text-lg text-gray-600">
-                JARDIM POMPEIA - INDAIATUBA/SP
+                Jardim Pompeia | Indaiatuba | SP
               </p>
             </div>
           </div>

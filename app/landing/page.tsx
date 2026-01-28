@@ -1,5 +1,5 @@
 export default function LandingPage() {
-  const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "5551981113836";
+  const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "5519995180739";
   const message = encodeURIComponent("Olá! Vi a página do BioChronic e gostaria de mais informações!");
 
   return (

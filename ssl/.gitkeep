@@ -1,0 +1,2 @@
+# Este arquivo mantém a pasta ssl/ no git
+# Os certificados SSL não devem ser commitados
