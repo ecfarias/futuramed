@@ -65,12 +65,12 @@ NEXT_PUBLIC_SITE_URL=http://localhost:3000
 NEXT_PUBLIC_WHATSAPP_NUMBER=5519995180739
 
 # Email (use suas credenciais SMTP)
-EMAIL_TO=cadatro@futuramed.com
-SMTP_HOST=smtp.gmail.com
+EMAIL_TO=cadastro@futuramedsp.com
+SMTP_HOST=smtppro.zoho.com
 SMTP_PORT=587
-SMTP_USER=seu-email@gmail.com
-SMTP_PASS=sua-senha-app
-EMAIL_FROM=noreply@futuramed.com
+SMTP_USER=eduardo@futuramedsp.com
+SMTP_PASS=Futura@2026
+EMAIL_FROM=nao-responder@futuramedsp.com
 ```
 
 4. Execute em modo de desenvolvimento:

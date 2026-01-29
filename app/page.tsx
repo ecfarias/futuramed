@@ -123,11 +123,13 @@ export default function Home() {
 
             {/* Joints Multi */}
             <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-              <div className="h-64 bg-gray-200 relative flex items-center justify-center">
-                <div className="text-center p-6">
-                  <div className="text-6xl font-bold text-primary mb-2">JM</div>
-                  <p className="text-gray-500 text-sm">Joints Multi</p>
-                </div>
+              <div className="h-64 bg-gray-200 relative">
+                <Image
+                  src="/images/joints-multi.jpg"
+                  alt="Joints Multi"
+                  fill
+                  className="object-contain p-6"
+                />
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-bold mb-2 text-dark">Joints Multi</h3>
@@ -154,11 +156,13 @@ export default function Home() {
 
             {/* Bioblock */}
             <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-              <div className="h-64 bg-gray-200 relative flex items-center justify-center">
-                <div className="text-center p-6">
-                  <div className="text-6xl font-bold text-primary mb-2">BB</div>
-                  <p className="text-gray-500 text-sm">Bioblock</p>
-                </div>
+              <div className="h-64 bg-gray-200 relative">
+                <Image
+                  src="/images/bioblock.jpg"
+                  alt="Bioblock"
+                  fill
+                  className="object-contain p-6"
+                />
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-bold mb-2 text-dark">Bioblock</h3>

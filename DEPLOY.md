@@ -142,11 +142,12 @@ bash scripts/deploy-vps.sh
 
 Criar arquivo `.env` no VPS em `/var/www/futuramed/.env`:
 ```bash
-SMTP_HOST=smtp.gmail.com
+EMAIL_TO=cadastro@futuramedsp.com
+SMTP_HOST=smtppro.zoho.com
 SMTP_PORT=587
-SMTP_USER=seu-email@gmail.com
-SMTP_PASS=sua-senha-app
-EMAIL_FROM=noreply@futuramedsp.com
+SMTP_USER=eduardo@futuramedsp.com
+SMTP_PASS=Futura@2026
+EMAIL_FROM=nao-responder@futuramedsp.com
 ```
 
 Depois reiniciar:
