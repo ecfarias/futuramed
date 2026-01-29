@@ -18,8 +18,13 @@ echo ""
 # Navegar para o diretório do projeto
 cd /var/www/futuramed
 
+# Parar containers antigos que podem estar ocupando portas
+echo "Parando containers antigos..."
+docker stop nginx 2>/dev/null || true
+docker rm nginx 2>/dev/null || true
+
 # Parar containers se estiverem rodando
-echo "Parando containers..."
+echo "Parando containers do compose..."
 docker compose down 2>/dev/null || true
 
 # Fazer backup da configuração SSL
