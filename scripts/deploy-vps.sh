@@ -45,9 +45,21 @@ docker-compose logs --tail=15 futuramed-web
 echo ""
 echo "=== Deploy concluído! ==="
 echo "Site disponível em: https://futuramedsp.com"
-echo "IP direto: https://72.61.27.131"
+echo ""
+
+# Verificar se SSL está configurado
+if docker-compose exec -T nginx test -f /etc/letsencrypt/live/futuramedsp.com/fullchain.pem 2>/dev/null; then
+    echo "✅ Certificados SSL encontrados e funcionando!"
+else
+    echo "⚠️  CERTIFICADOS SSL NÃO ENCONTRADOS!"
+    echo ""
+    echo "Execute o script de configuração SSL:"
+    echo "  bash scripts/setup-ssl.sh"
+fi
+
 echo ""
 echo "Comandos úteis:"
 echo "  - Ver todos os logs: docker-compose logs -f"
 echo "  - Reiniciar serviços: docker-compose restart"
 echo "  - Parar tudo: docker-compose down"
+echo "  - Configurar SSL: bash scripts/setup-ssl.sh"
