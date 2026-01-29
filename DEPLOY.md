@@ -86,34 +86,34 @@ Após o deploy, o site estará disponível em:
 ### Ver logs em tempo real
 ```bash
 cd /var/www/futuramed
-docker-compose logs -f
+docker compose logs -f
 ```
 
 ### Ver logs apenas do nginx
 ```bash
-docker-compose logs -f nginx
+docker compose logs -f nginx
 ```
 
 ### Ver logs apenas da aplicação
 ```bash
-docker-compose logs -f futuramed-web
+docker compose logs -f futuramed-web
 ```
 
 ### Reiniciar serviços
 ```bash
-docker-compose restart
+docker compose restart
 ```
 
 ### Parar todos os serviços
 ```bash
-docker-compose down
+docker compose down
 ```
 
 ### Reconstruir tudo do zero
 ```bash
-docker-compose down
+docker compose down
 docker system prune -af
-docker-compose up -d --build
+docker compose up -d --build
 ```
 
 ## 🔐 Configurar Let's Encrypt (após primeiro deploy)
@@ -127,7 +127,7 @@ sudo certbot certonly --standalone -d futuramedsp.com -d www.futuramedsp.com
    - Descomentar linhas do Let's Encrypt
    - Comentar linhas dos certificados temporários
 
-3. Atualizar `docker-compose.yml`:
+3. Atualizar `docker compose.yml`:
    - Adicionar volume: `- /etc/letsencrypt:/etc/letsencrypt:ro`
 
 4. Fazer commit e push das mudanças
@@ -151,7 +151,7 @@ EMAIL_FROM=noreply@futuramedsp.com
 
 Depois reiniciar:
 ```bash
-docker-compose restart
+docker compose restart
 ```
 
 ## 🆘 Troubleshooting
@@ -159,10 +159,10 @@ docker-compose restart
 ### Site não carrega
 ```bash
 # Verificar se containers estão rodando
-docker-compose ps
+docker compose ps
 
 # Ver logs de erros
-docker-compose logs --tail=50
+docker compose logs --tail=50
 
 # Verificar portas
 sudo netstat -tulpn | grep -E '80|443'

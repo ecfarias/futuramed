@@ -36,25 +36,25 @@ bash scripts/setup-ssl.sh
 
 ### 1. Verificar Containers
 ```bash
-docker-compose ps
+docker compose ps
 ```
 Todos devem estar `Up`
 
 ### 2. Verificar Logs
 ```bash
 # Nginx
-docker-compose logs --tail=50 nginx
+docker compose logs --tail=50 nginx
 
 # Aplicação
-docker-compose logs --tail=50 futuramed-web
+docker compose logs --tail=50 futuramed-web
 
 # Certbot
-docker-compose logs --tail=20 certbot
+docker compose logs --tail=20 certbot
 ```
 
 ### 3. Verificar Certificados SSL
 ```bash
-docker-compose exec certbot certbot certificates
+docker compose exec certbot certbot certificates
 ```
 
 Deve mostrar:
@@ -107,22 +107,22 @@ curl -I https://futuramedsp.com
 
 ```bash
 # Ver todos os logs em tempo real
-docker-compose logs -f
+docker compose logs -f
 
 # Reiniciar apenas o Nginx
-docker-compose restart nginx
+docker compose restart nginx
 
 # Reiniciar tudo
-docker-compose restart
+docker compose restart
 
 # Parar tudo
-docker-compose down
+docker compose down
 
 # Iniciar tudo
-docker-compose up -d
+docker compose up -d
 
 # Reconstruir e iniciar
-docker-compose up -d --build
+docker compose up -d --build
 
 # Ver uso de recursos
 docker stats
@@ -131,11 +131,11 @@ docker stats
 docker system prune
 
 # Verificar renovação SSL (teste)
-docker-compose exec certbot certbot renew --dry-run
+docker compose exec certbot certbot renew --dry-run
 
 # Forçar renovação SSL
-docker-compose exec certbot certbot renew --force-renewal
-docker-compose restart nginx
+docker compose exec certbot certbot renew --force-renewal
+docker compose restart nginx
 ```
 
 ## 🚨 Solução de Problemas
@@ -147,10 +147,10 @@ docker-compose restart nginx
 **Solução:**
 ```bash
 # Verificar logs
-docker-compose logs nginx
+docker compose logs nginx
 
 # Verificar se certificados existem
-docker-compose exec nginx ls -la /etc/letsencrypt/live/futuramedsp.com/
+docker compose exec nginx ls -la /etc/letsencrypt/live/futuramedsp.com/
 
 # Se não existirem, executar setup-ssl.sh
 bash scripts/setup-ssl.sh
@@ -179,13 +179,13 @@ sudo ufw status
 **Solução:**
 ```bash
 # Ver logs detalhados
-docker-compose logs futuramed-web
+docker compose logs futuramed-web
 
 # Reiniciar container
-docker-compose restart futuramed-web
+docker compose restart futuramed-web
 
 # Se persistir, reconstruir
-docker-compose up -d --build futuramed-web
+docker compose up -d --build futuramed-web
 ```
 
 ### Problema: Certificados expiraram
@@ -195,13 +195,13 @@ docker-compose up -d --build futuramed-web
 **Solução:**
 ```bash
 # Forçar renovação
-docker-compose exec certbot certbot renew --force-renewal
+docker compose exec certbot certbot renew --force-renewal
 
 # Reiniciar Nginx
-docker-compose restart nginx
+docker compose restart nginx
 
 # Verificar logs do Certbot
-docker-compose logs certbot
+docker compose logs certbot
 ```
 
 ## 📊 Monitoramento
@@ -209,19 +209,19 @@ docker-compose logs certbot
 ### Verificar Status Geral
 ```bash
 # Status dos containers
-docker-compose ps
+docker compose ps
 
 # Uso de recursos
 docker stats
 
 # Logs gerais
-docker-compose logs --tail=100
+docker compose logs --tail=100
 ```
 
 ### Verificar Validade dos Certificados
 ```bash
 # Via Certbot
-docker-compose exec certbot certbot certificates
+docker compose exec certbot certbot certificates
 
 # Via OpenSSL
 echo | openssl s_client -servername futuramedsp.com -connect futuramedsp.com:443 2>/dev/null | openssl x509 -noout -dates
@@ -229,7 +229,7 @@ echo | openssl s_client -servername futuramedsp.com -connect futuramedsp.com:443
 
 ### Verificar Próxima Renovação
 ```bash
-docker-compose exec certbot certbot certificates
+docker compose exec certbot certbot certificates
 # Verifica "Expiry Date"
 ```
 

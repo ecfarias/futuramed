@@ -10,7 +10,7 @@ O site estava dando **timeout no HTTPS** porque:
 ## 🛠️ Solução Implementada
 
 ### 1. Configuração Let's Encrypt com Certbot
-- Adicionado container Certbot ao `docker-compose.yml`
+- Adicionado container Certbot ao `docker compose.yml`
 - Configurada renovação automática a cada 12 horas
 - Criados volumes Docker para persistir certificados
 
@@ -87,8 +87,8 @@ Se encontrar algum problema durante a configuração:
 
 1. Verifique os logs:
    ```bash
-   docker-compose logs nginx
-   docker-compose logs certbot
+   docker compose logs nginx
+   docker compose logs certbot
    ```
 
 2. Verifique o DNS:

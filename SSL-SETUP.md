@@ -63,7 +63,7 @@ Os certificados serão renovados automaticamente pelo container Certbot que veri
 Para verificar a renovação manualmente:
 
 ```bash
-docker-compose exec certbot certbot renew --dry-run
+docker compose exec certbot certbot renew --dry-run
 ```
 
 ## Solução de Problemas
@@ -74,10 +74,10 @@ Se o Nginx não encontrar os certificados, execute:
 
 ```bash
 # Ver logs do Nginx
-docker-compose logs nginx
+docker compose logs nginx
 
 # Tentar obter certificados novamente
-docker-compose run --rm certbot certonly \
+docker compose run --rm certbot certonly \
   --webroot \
   --webroot-path=/var/www/certbot \
   --email cadastro@futuramedsp.com \
@@ -87,7 +87,7 @@ docker-compose run --rm certbot certonly \
   -d www.futuramedsp.com
 
 # Reiniciar Nginx
-docker-compose restart nginx
+docker compose restart nginx
 ```
 
 ### Erro: Timeout na porta 443
@@ -118,32 +118,32 @@ nslookup futuramedsp.com
 
 ```bash
 # Ver status dos containers
-docker-compose ps
+docker compose ps
 
 # Ver logs em tempo real
-docker-compose logs -f
+docker compose logs -f
 
 # Ver apenas logs do Nginx
-docker-compose logs -f nginx
+docker compose logs -f nginx
 
 # Ver apenas logs do Certbot
-docker-compose logs certbot
+docker compose logs certbot
 
 # Reiniciar Nginx
-docker-compose restart nginx
+docker compose restart nginx
 
 # Recriar tudo do zero
-docker-compose down
-docker-compose up -d --build
+docker compose down
+docker compose up -d --build
 
 # Verificar validade dos certificados
-docker-compose exec certbot certbot certificates
+docker compose exec certbot certbot certificates
 
 # Forçar renovação (teste)
-docker-compose exec certbot certbot renew --dry-run
+docker compose exec certbot certbot renew --dry-run
 
 # Forçar renovação (real - use com cuidado)
-docker-compose exec certbot certbot renew --force-renewal
+docker compose exec certbot certbot renew --force-renewal
 ```
 
 ## Estrutura de Volumes

@@ -31,8 +31,8 @@ cp nginx-http-only.conf nginx.conf
 
 ### 5. Reiniciar containers
 ```bash
-docker-compose down
-docker-compose up -d
+docker compose down
+docker compose up -d
 ```
 
 ### 6. Verificar se está funcionando
@@ -44,15 +44,15 @@ sleep 10
 curl -I http://futuramedsp.com
 
 # Ver logs
-docker-compose logs --tail=50 nginx
-docker-compose logs --tail=50 futuramed-web
+docker compose logs --tail=50 nginx
+docker compose logs --tail=50 futuramed-web
 ```
 
 **Agora o site deve estar acessível em HTTP:** http://futuramedsp.com
 
 ### 7. Obter certificados Let's Encrypt
 ```bash
-docker-compose run --rm certbot certonly \
+docker compose run --rm certbot certonly \
   --webroot \
   --webroot-path=/var/www/certbot \
   --email cadastro@futuramedsp.com \
@@ -68,7 +68,7 @@ docker-compose run --rm certbot certonly \
 cp nginx.conf.ssl.bak nginx.conf
 
 # Reiniciar Nginx
-docker-compose restart nginx
+docker compose restart nginx
 
 # Aguardar
 sleep 5
@@ -112,24 +112,24 @@ curl -I https://futuramedsp.com
 
 ### Containers rodando?
 ```bash
-docker-compose ps
+docker compose ps
 ```
 
 ### Ver logs
 ```bash
 # Todos os logs
-docker-compose logs --tail=100
+docker compose logs --tail=100
 
 # Apenas Nginx
-docker-compose logs --tail=50 nginx
+docker compose logs --tail=50 nginx
 
 # Apenas Certbot
-docker-compose logs certbot
+docker compose logs certbot
 ```
 
 ### Certificados existem?
 ```bash
-docker-compose exec nginx ls -la /etc/letsencrypt/live/futuramedsp.com/
+docker compose exec nginx ls -la /etc/letsencrypt/live/futuramedsp.com/
 ```
 
 Deve mostrar:

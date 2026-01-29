@@ -8,7 +8,7 @@ Website institucional completo para a Futuramed Sports Medicine - Distribuidora 
 - **Linguagem**: TypeScript
 - **Estilização**: Tailwind CSS
 - **Email**: Nodemailer
-- **Containerização**: Docker + docker-compose
+- **Containerização**: Docker + docker compose
 
 ## 📋 Estrutura do Projeto
 
@@ -28,7 +28,7 @@ futuramed/
 ├── public/               # Assets estáticos
 │   └── images/           # Imagens do site
 ├── Dockerfile            # Configuração Docker
-├── docker-compose.yml    # Orquestração Docker
+├── docker compose.yml    # Orquestração Docker
 └── .env.example          # Variáveis de ambiente
 
 ```
@@ -86,12 +86,12 @@ npm run dev
 
 1. Build da imagem:
 ```bash
-docker-compose build
+docker compose build
 ```
 
 2. Execute o container:
 ```bash
-docker-compose up -d
+docker compose up -d
 ```
 
 3. Acesse: http://localhost
@@ -123,12 +123,12 @@ SMTP_PASS=sua-senha-app
 
 4. Execute com Docker:
 ```bash
-docker-compose up -d
+docker compose up -d
 ```
 
 5. Verifique os logs:
 ```bash
-docker-compose logs -f
+docker compose logs -f
 ```
 
 6. Acesse: http://72.62.111.1
@@ -137,16 +137,16 @@ docker-compose logs -f
 
 ```bash
 # Parar containers
-docker-compose down
+docker compose down
 
 # Reiniciar
-docker-compose restart
+docker compose restart
 
 # Ver logs
-docker-compose logs -f futuramed-web
+docker compose logs -f futuramed-web
 
 # Rebuild após mudanças
-docker-compose up -d --build
+docker compose up -d --build
 ```
 
 ## 📧 Configuração de Email (SMTP)
@@ -291,7 +291,7 @@ npm run build
 
 1. Verifique as credenciais SMTP no `.env`
 2. Para Gmail, certifique-se de usar senha de aplicativo
-3. Verifique os logs: `docker-compose logs -f`
+3. Verifique os logs: `docker compose logs -f`
 
 ### Porta 80 já está em uso
 
@@ -299,7 +299,7 @@ npm run build
 # Encontre o processo
 sudo lsof -i :80
 
-# Mate o processo ou mude a porta no docker-compose.yml
+# Mate o processo ou mude a porta no docker compose.yml
 ports:
   - "8080:3000"
 ```
