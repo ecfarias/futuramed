@@ -27,32 +27,15 @@ docker rm nginx 2>/dev/null || true
 echo "Parando containers do compose..."
 docker compose down 2>/dev/null || true
 
-# Fazer backup da configuração SSL
-echo "Fazendo backup do nginx.conf..."
-cp nginx.conf nginx.conf.ssl.bak
-
-# Usar configuração HTTP-only temporária
-echo "Usando configuração HTTP-only temporária..."
-cp nginx-http-only.conf nginx.conf
-
-# Iniciar containers com HTTP apenas
-echo "Iniciando Nginx em modo HTTP para validação..."
-docker compose up -d
-
-# Aguardar containers iniciarem
-echo "Aguardando containers iniciarem..."
-sleep 10
-
-# Verificar se está funcionando
-echo "Testando HTTP..."
-curl -f http://futuramedsp.com/ > /dev/null 2>&1 && echo "✅ HTTP funcionando!" || echo "⚠️ HTTP com problemas"
-
-# Obter certificados Let's Encrypt
+# Obter certificados Let's Encrypt (modo standalone - mais simples)
 echo ""
 echo "Obtendo certificados Let's Encrypt..."
-docker compose run --rm --entrypoint certbot certbot certonly \
-  --webroot \
-  --webroot-path=/var/www/certbot \
+docker run --rm -p 80:80 -p 443:443 \
+  -v certbot-etc:/etc/letsencrypt \
+  -v certbot-var:/var/lib/letsencrypt \
+  certbot/certbot certonly \
+  --standalone \
+  --preferred-challenges http \
   --email cadastro@futuramedsp.com \
   --agree-tos \
   --no-eff-email \
@@ -60,32 +43,48 @@ docker compose run --rm --entrypoint certbot certbot certonly \
   -d www.futuramedsp.com
 
 # Verificar se certificados foram criados
-if docker compose exec -T nginx test -f /etc/letsencrypt/live/futuramedsp.com/fullchain.pem 2>/dev/null; then
+echo ""
+echo "Verificando certificados..."
+if docker run --rm -v certbot-etc:/etc/letsencrypt certbot/certbot certificates | grep -q "futuramedsp.com"; then
     echo "✅ Certificados criados com sucesso!"
-    
-    # Restaurar configuração SSL completa
-    echo "Restaurando configuração SSL..."
-    cp nginx.conf.ssl.bak nginx.conf
-    
-    # Reiniciar Nginx para usar SSL
-    echo "Reiniciando Nginx com SSL..."
-    docker compose restart nginx
-    
-    # Aguardar reiniciar
-    sleep 5
-    
-    echo ""
-    echo "✅ SSL configurado com sucesso!"
-    echo ""
-    echo "Teste o site:"
-    echo "  http://futuramedsp.com → deve redirecionar para HTTPS"
-    echo "  https://futuramedsp.com → deve carregar com cadeado 🔒"
-    echo ""
 else
     echo "❌ Erro ao criar certificados!"
-    echo "Mantendo configuração HTTP-only."
-    echo "Verifique os logs: docker compose logs certbot"
+    echo "Verifique se:"
+    echo "  1. As portas 80 e 443 estão abertas no firewall"
+    echo "  2. O DNS está apontando para este servidor"
+    echo "  3. Não há nada bloqueando as portas"
     exit 1
 fi
 
+# Fazer backup da configuração SSL
+echo ""
+echo "Fazendo backup do nginx.conf..."
+cp nginx.conf nginx.conf.ssl.bak 2>/dev/null || true
+
+# Usar configuração HTTP-only temporária
+echo "Usando configuração HTTP-only temporária..."
+cp nginx-http-only.conf nginx.conf
+
+# Iniciar containers com HTTP apenas
+echo ""
+echo "Iniciando containers..."
+docker compose up -d
+
+# Aguardar containers iniciarem
+echo "Aguardando containers iniciarem..."
+sleep 10
+
+# Restaurar configuração SSL completa
+echo ""
+echo "Ativando SSL..."
+cp nginx.conf.ssl.bak nginx.conf
+docker compose restart nginx
+
+echo ""
+echo "✅ SSL configurado com sucesso!"
+echo ""
+echo "Teste o site:"
+echo "  http://futuramedsp.com → deve redirecionar para HTTPS"
+echo "  https://futuramedsp.com → deve carregar com cadeado 🔒"
+echo ""
 echo "Os certificados serão renovados automaticamente pelo Certbot."
