@@ -13,8 +13,9 @@ if ! command -v docker &> /dev/null; then
     exit 1
 fi
 
-if ! command -v docker-compose &> /dev/null; then
-    echo "❌ Docker Compose is not installed. Please install Docker Compose first."
+# Docker Compose is now part of Docker CLI
+if ! docker compose version &> /dev/null; then
+    echo "❌ Docker Compose plugin is not installed. Please install Docker Compose."
     exit 1
 fi
 
@@ -29,21 +30,21 @@ fi
 
 # Stop existing containers
 echo "🛑 Stopping existing containers..."
-docker-compose down 2>/dev/null || true
+docker compose down 2>/dev/null || true
 
 # Build new image
 echo "🏗️  Building Docker image..."
-docker-compose build
+docker compose build
 
 # Start containers
 echo "▶️  Starting containers..."
-docker-compose up -d
+docker compose up -d
 
 # Show logs
 echo "📋 Showing logs (CTRL+C to exit)..."
 echo "   Container will continue running in background"
 sleep 2
-docker-compose logs -f --tail=50
+docker compose logs -f --tail=50
 
 echo "✅ Deployment complete!"
 echo "   Access your site at: http://$(hostname -I | awk '{print $1}')"

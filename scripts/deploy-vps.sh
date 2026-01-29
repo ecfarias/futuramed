@@ -14,7 +14,7 @@ git pull origin main
 
 # Parar containers
 echo "2. Parando containers..."
-docker-compose down
+docker compose down
 
 # Limpar imagens antigas (opcional)
 echo "3. Limpando imagens antigas..."
@@ -22,7 +22,7 @@ docker image prune -f
 
 # Reconstruir e iniciar
 echo "4. Reconstruindo e iniciando containers..."
-docker-compose up -d --build
+docker compose up -d --build
 
 # Aguardar containers iniciarem
 echo "5. Aguardando containers iniciarem..."
@@ -31,16 +31,16 @@ sleep 5
 # Verificar status
 echo ""
 echo "6. Verificando status dos containers..."
-docker-compose ps
+docker compose ps
 
 # Verificar logs
 echo ""
 echo "7. Logs do nginx:"
-docker-compose logs --tail=15 nginx
+docker compose logs --tail=15 nginx
 
 echo ""
 echo "8. Logs da aplicação:"
-docker-compose logs --tail=15 futuramed-web
+docker compose logs --tail=15 futuramed-web
 
 echo ""
 echo "=== Deploy concluído! ==="
@@ -48,7 +48,7 @@ echo "Site disponível em: https://futuramedsp.com"
 echo ""
 
 # Verificar se SSL está configurado
-if docker-compose exec -T nginx test -f /etc/letsencrypt/live/futuramedsp.com/fullchain.pem 2>/dev/null; then
+if docker compose exec -T nginx test -f /etc/letsencrypt/live/futuramedsp.com/fullchain.pem 2>/dev/null; then
     echo "✅ Certificados SSL encontrados e funcionando!"
 else
     echo "⚠️  CERTIFICADOS SSL NÃO ENCONTRADOS!"
@@ -59,7 +59,7 @@ fi
 
 echo ""
 echo "Comandos úteis:"
-echo "  - Ver todos os logs: docker-compose logs -f"
-echo "  - Reiniciar serviços: docker-compose restart"
-echo "  - Parar tudo: docker-compose down"
+echo "  - Ver todos os logs: docker compose logs -f"
+echo "  - Reiniciar serviços: docker compose restart"
+echo "  - Parar tudo: docker compose down"
 echo "  - Configurar SSL: bash scripts/setup-ssl.sh"

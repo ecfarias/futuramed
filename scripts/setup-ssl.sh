@@ -20,7 +20,7 @@ cd /var/www/futuramed
 
 # Parar containers se estiverem rodando
 echo "Parando containers..."
-docker-compose down 2>/dev/null || true
+docker compose down 2>/dev/null || true
 
 # Fazer backup da configuração SSL
 echo "Fazendo backup do nginx.conf..."
@@ -32,7 +32,7 @@ cp nginx-http-only.conf nginx.conf
 
 # Iniciar containers com HTTP apenas
 echo "Iniciando Nginx em modo HTTP para validação..."
-docker-compose up -d
+docker compose up -d
 
 # Aguardar containers iniciarem
 echo "Aguardando containers iniciarem..."
@@ -45,7 +45,7 @@ curl -f http://futuramedsp.com/ > /dev/null 2>&1 && echo "✅ HTTP funcionando!"
 # Obter certificados Let's Encrypt
 echo ""
 echo "Obtendo certificados Let's Encrypt..."
-docker-compose run --rm certbot certonly \
+docker compose run --rm certbot certonly \
   --webroot \
   --webroot-path=/var/www/certbot \
   --email cadastro@futuramedsp.com \
@@ -55,7 +55,7 @@ docker-compose run --rm certbot certonly \
   -d www.futuramedsp.com
 
 # Verificar se certificados foram criados
-if docker-compose exec -T nginx test -f /etc/letsencrypt/live/futuramedsp.com/fullchain.pem 2>/dev/null; then
+if docker compose exec -T nginx test -f /etc/letsencrypt/live/futuramedsp.com/fullchain.pem 2>/dev/null; then
     echo "✅ Certificados criados com sucesso!"
     
     # Restaurar configuração SSL completa
@@ -64,7 +64,7 @@ if docker-compose exec -T nginx test -f /etc/letsencrypt/live/futuramedsp.com/fu
     
     # Reiniciar Nginx para usar SSL
     echo "Reiniciando Nginx com SSL..."
-    docker-compose restart nginx
+    docker compose restart nginx
     
     # Aguardar reiniciar
     sleep 5
@@ -79,7 +79,7 @@ if docker-compose exec -T nginx test -f /etc/letsencrypt/live/futuramedsp.com/fu
 else
     echo "❌ Erro ao criar certificados!"
     echo "Mantendo configuração HTTP-only."
-    echo "Verifique os logs: docker-compose logs certbot"
+    echo "Verifique os logs: docker compose logs certbot"
     exit 1
 fi
 
