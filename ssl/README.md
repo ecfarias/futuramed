@@ -41,7 +41,7 @@ ssl_certificate_key /etc/letsencrypt/live/futuramedsp.com/privkey.pem;
 
 E comentar as linhas temporárias.
 
-### 4. Atualizar docker-compose.yml
+### 4. Atualizar docker compose.yml
 
 Adicionar volume no serviço nginx:
 
@@ -65,5 +65,5 @@ sudo certbot renew --dry-run
 Reiniciar os containers:
 
 ```bash
-docker-compose restart nginx
+docker compose restart nginx
 ```

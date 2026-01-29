@@ -21,10 +21,10 @@ cp .env.example .env
 nano .env  # Add your SMTP credentials
 
 # Deploy with Docker
-docker-compose up -d
+docker compose up -d
 
 # Check logs
-docker-compose logs -f
+docker compose logs -f
 ```
 
 ## 📧 SMTP Configuration (Gmail)
@@ -78,11 +78,11 @@ npm run dev
 **Email not sending?**
 - Check SMTP credentials in `.env`
 - For Gmail, use app password (not regular password)
-- Check logs: `docker-compose logs -f`
+- Check logs: `docker compose logs -f`
 
 **Port 80 in use?**
 - Check: `sudo lsof -i :80`
-- Stop other services or change port in `docker-compose.yml`
+- Stop other services or change port in `docker compose.yml`
 
 **Build fails?**
 - Clear cache: `rm -rf .next node_modules`
