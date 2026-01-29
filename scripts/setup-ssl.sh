@@ -39,6 +39,8 @@ docker run --rm -p 80:80 -p 443:443 \
   --email cadastro@futuramedsp.com \
   --agree-tos \
   --no-eff-email \
+  --keep-until-expiring \
+  --non-interactive \
   -d futuramedsp.com \
   -d www.futuramedsp.com
 
