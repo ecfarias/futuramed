@@ -63,4 +63,3 @@ volumes:
   certbot-etc:
   certbot-var:
   certbot-www:
-  nginx-logs:
