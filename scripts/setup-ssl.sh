@@ -50,7 +50,7 @@ curl -f http://futuramedsp.com/ > /dev/null 2>&1 && echo "✅ HTTP funcionando!"
 # Obter certificados Let's Encrypt
 echo ""
 echo "Obtendo certificados Let's Encrypt..."
-docker compose run --rm certbot certonly \
+docker compose run --rm --entrypoint certbot certbot certonly \
   --webroot \
   --webroot-path=/var/www/certbot \
   --email cadastro@futuramedsp.com \
