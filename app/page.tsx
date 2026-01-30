@@ -60,7 +60,7 @@ export default function Home() {
               Excelência em Produtos Médicos
             </h2>
             <p className="text-lg text-gray-700 mb-8">
-              A Futuramed Sports Medicine é uma distribuidora especializada em produtos médicos 
+              A Futuramed é uma distribuidora especializada em produtos médicos 
               de alta qualidade para tratamento de dor crônica. Oferecemos soluções inovadoras 
               que combinam tecnologia avançada e segurança para profissionais da área da saúde.
             </p>

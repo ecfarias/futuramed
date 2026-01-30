@@ -2,11 +2,34 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "type": "msedge",
+      "type": "node",
       "request": "launch",
-      "name": "Launch Edge",
-      "url": "http://localhost:3000/futuramed",
+      "name": "Next.js: Debug Server-Side",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
+      "port": 9229,
+      "console": "integratedTerminal"
+    },
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "Next.js: Debug Client-Side (Chrome)",
+      "url": "http://localhost:3000",
       "webRoot": "${workspaceFolder}"
+    },
+    {
+      "type": "node",
+      "request": "attach",
+      "name": "Next.js: Attach to Node",
+      "port": 9229,
+      "skipFiles": ["<node_internals>/**"]
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Next.js: Debug Full Stack",
+      "configurations": ["Next.js: Debug Server-Side", "Next.js: Debug Client-Side (Chrome)"],
+      "stopAll": true
     }
   ]
 }
