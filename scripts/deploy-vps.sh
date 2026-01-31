@@ -13,33 +13,38 @@ echo "1. Baixando atualizações do GitHub..."
 git pull origin main
 
 # Parar containers
-echo "2. Parando containers..."
-docker compose down
+echo "2. Parando e removendo containers..."
+docker compose down --volumes --remove-orphans
 
-# Limpar imagens antigas (opcional)
-echo "3. Limpando imagens antigas..."
-docker image prune -f
+# Limpar cache e imagens antigas
+echo "3. Limpando cache Docker (build cache, imagens não usadas)..."
+docker builder prune -af
+docker image prune -af
+docker system prune -f
 
-# Reconstruir e iniciar
-echo "4. Reconstruindo e iniciando containers..."
-docker compose up -d --build
+# Reconstruir SEM CACHE e iniciar
+echo "4. Reconstruindo containers SEM CACHE..."
+docker compose build --no-cache --pull
+
+echo "5. Iniciando containers..."
+docker compose up -d
 
 # Aguardar containers iniciarem
-echo "5. Aguardando containers iniciarem..."
-sleep 5
+echo "6. Aguardando containers iniciarem..."
+sleep 10
 
 # Verificar status
 echo ""
-echo "6. Verificando status dos containers..."
+echo "7. Verificando status dos containers..."
 docker compose ps
 
 # Verificar logs
 echo ""
-echo "7. Logs do nginx:"
+echo "8. Logs do nginx:"
 docker compose logs --tail=15 nginx
 
 echo ""
-echo "8. Logs da aplicação:"
+echo "9. Logs da aplicação:"
 docker compose logs --tail=15 futuramed-web
 
 echo ""
