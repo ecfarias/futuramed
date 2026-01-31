@@ -12,39 +12,44 @@ cd /var/www/futuramed || exit
 echo "1. Baixando atualizações do GitHub..."
 git pull origin main
 
+# Limpar cache do Next.js LOCAL (no VPS)
+echo "2. Limpando cache do Next.js no VPS..."
+rm -rf .next
+rm -rf node_modules/.cache
+
 # Parar containers
-echo "2. Parando e removendo containers..."
+echo "3. Parando e removendo containers..."
 docker compose down --volumes --remove-orphans
 
 # Limpar cache e imagens antigas
-echo "3. Limpando cache Docker (build cache, imagens não usadas)..."
+echo "4. Limpando cache Docker (build cache, imagens não usadas)..."
 docker builder prune -af
 docker image prune -af
 docker system prune -f
 
 # Reconstruir SEM CACHE e iniciar
-echo "4. Reconstruindo containers SEM CACHE..."
+echo "5. Reconstruindo containers SEM CACHE..."
 docker compose build --no-cache --pull
 
-echo "5. Iniciando containers..."
+echo "6. Iniciando containers..."
 docker compose up -d
 
 # Aguardar containers iniciarem
-echo "6. Aguardando containers iniciarem..."
+echo "7. Aguardando containers iniciarem..."
 sleep 10
 
 # Verificar status
 echo ""
-echo "7. Verificando status dos containers..."
+echo "8. Verificando status dos containers..."
 docker compose ps
 
 # Verificar logs
 echo ""
-echo "8. Logs do nginx:"
+echo "9. Logs do nginx:"
 docker compose logs --tail=15 nginx
 
 echo ""
-echo "9. Logs da aplicação:"
+echo "10. Logs da aplicação:"
 docker compose logs --tail=15 futuramed-web
 
 echo ""
