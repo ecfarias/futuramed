@@ -19,20 +19,26 @@ export async function sendEmail({
   console.log("SMTP_HOST:", process.env.SMTP_HOST);
   console.log("SMTP_PORT:", process.env.SMTP_PORT);
   console.log("SMTP_USER:", process.env.SMTP_USER);
+  console.log("EMAIL_FROM:", process.env.EMAIL_FROM);
   console.log("========================");
 
   const transporter = nodemailer.createTransport({
     host: process.env.SMTP_HOST || "smtp.gmail.com",
     port: parseInt(process.env.SMTP_PORT || "587"),
-    secure: false,
+    secure: false, // Use STARTTLS with port 587
+    requireTLS: true, // Force TLS
     auth: {
       user: process.env.SMTP_USER,
       pass: process.env.SMTP_PASS,
     },
+    tls: {
+      ciphers: 'SSLv3',
+      rejectUnauthorized: false,
+    },
   });
 
   const mailOptions = {
-    from: process.env.EMAIL_FROM || "noreply@futuramed.com",
+    from: process.env.SMTP_USER || process.env.EMAIL_FROM || "noreply@futuramed.com", // Use authenticated user as sender
     to,
     subject,
     html,
