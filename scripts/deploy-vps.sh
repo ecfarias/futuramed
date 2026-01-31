@@ -21,35 +21,40 @@ rm -rf node_modules/.cache
 echo "3. Parando e removendo containers..."
 docker compose down --volumes --remove-orphans
 
+# FORÇAR remoção da imagem do futuramed (garantir rebuild total)
+echo "4. Removendo imagem antiga do futuramed..."
+docker rmi futuramed-futuramed-web 2>/dev/null || true
+docker rmi $(docker images -q futuramed-futuramed-web) 2>/dev/null || true
+
 # Limpar cache e imagens antigas
-echo "4. Limpando cache Docker (build cache, imagens não usadas)..."
+echo "5. Limpando cache Docker (build cache, imagens não usadas)..."
 docker builder prune -af
 docker image prune -af
 docker system prune -f
 
 # Reconstruir SEM CACHE e iniciar
-echo "5. Reconstruindo containers SEM CACHE..."
+echo "6. Reconstruindo containers SEM CACHE..."
 docker compose build --no-cache --pull
 
-echo "6. Iniciando containers..."
+echo "7. Iniciando containers..."
 docker compose up -d
 
 # Aguardar containers iniciarem
-echo "7. Aguardando containers iniciarem..."
+echo "8. Aguardando containers iniciarem..."
 sleep 10
 
 # Verificar status
 echo ""
-echo "8. Verificando status dos containers..."
+echo "9. Verificando status dos containers..."
 docker compose ps
 
 # Verificar logs
 echo ""
-echo "9. Logs do nginx:"
+echo "10. Logs do nginx:"
 docker compose logs --tail=15 nginx
 
 echo ""
-echo "10. Logs da aplicação:"
+echo "11. Logs da aplicação:"
 docker compose logs --tail=15 futuramed-web
 
 echo ""
