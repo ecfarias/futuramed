@@ -1,6 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
 
+// FORÇAR REVALIDAÇÃO A CADA REQUEST - SEM CACHE
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 export default function Home() {
   const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "5519995180739";
   const message = encodeURIComponent("Olá! Gostaria de mais informações sobre os produtos Futuramed.");
