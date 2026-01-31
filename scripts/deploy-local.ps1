@@ -19,6 +19,10 @@ git add .
 Write-Host "2. Fazendo commit: $mensagem" -ForegroundColor Yellow
 git commit -m "$mensagem"
 
+if ($LASTEXITCODE -ne 0) {
+    Write-Host "Nada para commitar ou erro no commit." -ForegroundColor Yellow
+}
+
 # 3. Git Push
 Write-Host "3. Enviando para GitHub..." -ForegroundColor Yellow
 git push origin main
@@ -33,19 +37,17 @@ Write-Host "=== Código enviado para GitHub! ===" -ForegroundColor Green
 Write-Host ""
 
 # 4. Deploy no VPS via SSH
-Write-Host "4. Executando deploy no VPS via SSH..." -ForegroundColor Yellow
+Write-Host "4. Executando deploy no VPS..." -ForegroundColor Yellow
+Write-Host ""
 ssh "${VPS_USER}@${VPS_IP}" "bash /var/www/futuramed/scripts/deploy-vps.sh"
 
 if ($LASTEXITCODE -eq 0) {
     Write-Host ""
-    Write-Host "=== DEPLOY CONCLUÍDO! ===" -ForegroundColor Green
-    Write-Host "Site disponível em: https://futuramedsp.com" -ForegroundColor Cyan
+    Write-Host "=== ✅ DEPLOY CONCLUÍDO! ===" -ForegroundColor Green
+    Write-Host "Site disponível em: http://futuramedsp.com" -ForegroundColor Cyan
+    Write-Host ""
 } else {
     Write-Host ""
-    Write-Host "Erro no deploy automático. Execute manualmente no VPS:" -ForegroundColor Yellow
-    Write-Host "ssh ${VPS_USER}@${VPS_IP}" -ForegroundColor White
-    Write-Host "cd /var/www/futuramed" -ForegroundColor White
-    Write-Host "bash scripts/deploy-vps.sh" -ForegroundColor White
+    Write-Host "❌ Erro no deploy!" -ForegroundColor Red
+    exit 1
 }
-
-Write-Host ""
