@@ -12,6 +12,7 @@ services:
       - NEXT_PUBLIC_SITE_URL=https://futuramedsp.com
       - NEXT_PUBLIC_WHATSAPP_NUMBER=5519995180739
       - NEXT_PUBLIC_GA_MEASUREMENT_ID=G-S2YSCT8GYG
+      - NEXT_PUBLIC_GTM_ID=GTM-WS89KWMN
       - EMAIL_TO=cadastro@futuramedsp.com
       - SMTP_HOST=${SMTP_HOST:-smtp.gmail.com}
       - SMTP_PORT=${SMTP_PORT:-587}
