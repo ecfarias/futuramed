@@ -28,9 +28,12 @@ RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 
 # Copy built assets from builder
-COPY --from=builder /app/public ./public
+# First copy the standalone server
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
+# Then copy static assets
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+# CRITICAL: Copy public folder (standalone doesn't include it automatically)
+COPY --from=builder --chown=nextjs:nodejs /app/public ./public
 
 # Switch to non-root user
 USER nextjs
