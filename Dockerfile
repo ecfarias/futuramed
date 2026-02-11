@@ -35,6 +35,9 @@ COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 # CRITICAL: Copy public folder (standalone doesn't include it automatically)
 COPY --from=builder --chown=nextjs:nodejs /app/public ./public
 
+# Debug: verify images were copied
+RUN ls -lh /app/public/images/*.jpg || echo "WARNING: No JPG images found!"
+
 # Switch to non-root user
 USER nextjs
 
