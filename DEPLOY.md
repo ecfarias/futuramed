@@ -145,8 +145,8 @@ Criar arquivo `.env` no VPS em `/var/www/futuramed/.env`:
 EMAIL_TO=cadastro@futuramedsp.com
 SMTP_HOST=smtppro.zoho.com
 SMTP_PORT=587
-SMTP_USER=eduardo@futuramedsp.com
-SMTP_PASS=Futura@2026
+SMTP_USER=nao-responder@futuramedsp.com
+SMTP_PASS=Futura@2025
 EMAIL_FROM=nao-responder@futuramedsp.com
 ```
 

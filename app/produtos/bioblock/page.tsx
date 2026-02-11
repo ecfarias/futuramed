@@ -103,11 +103,13 @@ export default function BioblockPage() {
 
             <div className="space-y-6">
               <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-                <div className="h-96 bg-gray-200 relative flex items-center justify-center">
-                  <div className="text-center p-8">
-                    <div className="text-9xl font-bold text-primary mb-4">BB</div>
-                    <p className="text-gray-500 text-lg">Imagem em breve</p>
-                  </div>
+                <div className="h-96 bg-gray-200 relative">
+                  <Image
+                    src="/images/bioblock.jpg"
+                    alt="Bioblock"
+                    fill
+                    className="object-contain p-6"
+                  />
                 </div>
               </div>
             </div>

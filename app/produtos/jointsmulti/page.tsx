@@ -28,11 +28,13 @@ export default function JointsMultiPage() {
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
               <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-                <div className="h-96 bg-gray-200 relative flex items-center justify-center">
-                  <div className="text-center p-8">
-                    <div className="text-9xl font-bold text-primary mb-4">JM</div>
-                    <p className="text-gray-500 text-lg">Imagem em breve</p>
-                  </div>
+                <div className="h-96 bg-gray-200 relative">
+                  <Image
+                    src="/images/joints-multi.jpg"
+                    alt="Joints Multi"
+                    fill
+                    className="object-contain p-6"
+                  />
                 </div>
               </div>
             </div>

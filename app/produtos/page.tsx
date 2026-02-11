@@ -21,14 +21,14 @@ export default function ProdutosPage() {
             
             {/* BioChronic */}
             <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-              <div className="h-64 bg-gray-200 relative">
+              <Link href="/produtos/biochronic" className="block h-64 bg-gray-200 relative">
                 <Image
                   src="/images/biochronic-logo.jpg"
                   alt="BioChronic"
                   fill
                   className="object-contain p-6"
                 />
-              </div>
+              </Link>
               <div className="p-6">
                 <h3 className="text-2xl font-bold mb-3 text-dark">BioChronic</h3>
                 <p className="text-gray-600 mb-4">
@@ -51,14 +51,14 @@ export default function ProdutosPage() {
 
             {/* Joints Multi */}
             <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-              <div className="h-64 bg-gray-200 relative">
+              <Link href="/produtos/jointsmulti" className="block h-64 bg-gray-200 relative">
                 <Image
                   src="/images/joints-multi.jpg"
                   alt="Joints Multi"
                   fill
                   className="object-contain p-6"
                 />
-              </div>
+              </Link>
               <div className="p-6">
                 <h3 className="text-2xl font-bold mb-3 text-dark">Joints Multi</h3>
                 <p className="text-gray-600 mb-4">
@@ -81,14 +81,14 @@ export default function ProdutosPage() {
 
             {/* Bioblock */}
             <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-              <div className="h-64 bg-gray-200 relative">
+              <Link href="/produtos/bioblock" className="block h-64 bg-gray-200 relative">
                 <Image
                   src="/images/bioblock.jpg"
                   alt="Bioblock"
                   fill
                   className="object-contain p-6"
                 />
-              </div>
+              </Link>
               <div className="p-6">
                 <h3 className="text-2xl font-bold mb-3 text-dark">Bioblock</h3>
                 <p className="text-gray-600 mb-4">
